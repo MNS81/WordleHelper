@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace WordleHelper
 {
@@ -47,6 +45,7 @@ namespace WordleHelper
             if (textBox5.Text.Length != 0) maskLetters[4] = textBox5.Text;
             if (InTextBox.Text.Length > 0 || OutTextBox.Text.Length > 0 || String.Join("", maskLetters) != ".....")
             {
+                words.Clear();
                 using (StreamReader sr = new StreamReader(@"Data\words.db", Encoding.UTF8))
                 {
                     string line;
@@ -63,14 +62,11 @@ namespace WordleHelper
                 {
                     words = words.Where(str => OutTextBox.Text.All(c => !str.Contains(c))).ToList();
                 }
-                maskWord = String.Join("", maskLetters);
                 if (maskWord != ".....")
                 {
-                    string pattern = "^" + maskWord + "$";
-                    words = words.Where(x => Regex.IsMatch(x, pattern)).ToList();
+                    words = words.Where(x => Regex.IsMatch(x, $"^{String.Join("", maskLetters)}$")).ToList();
                 }
                 MessageBox.Show(String.Join("\t", words));
-                words.Clear();
             }
             else
             {
@@ -81,6 +77,56 @@ namespace WordleHelper
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"Программа поможет вам разгадать слово в игре «5 букв» от Тинькофф банка или приложении Вордли и выиграть.\n\nВы можете найти правильный ответ по маске слова, известным и отсутствующим буквам.\n\nПрограмма работает исключительно с кириллицей!");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            AddTextBox.Text = String.Empty;
+            Height = 403;
+            AddLabel.Enabled = true;
+            AddLabel.Visible = true;
+            AddTextBox.Enabled = true;
+            AddTextBox.Visible = true;
+            AddBox.Enabled = true;
+            AddBox.Visible = true;
+            CancelBox.Enabled = true;
+            CancelBox.Visible = true;
+        }
+
+        private void CancelBox_Click(object sender, EventArgs e)
+        {
+            AddTextBox.Text = String.Empty;
+            Height = 331;
+            AddLabel.Enabled = false;
+            AddLabel.Visible = false;
+            AddTextBox.Enabled = false;
+            AddTextBox.Visible = false;
+            AddBox.Enabled = false;
+            AddBox.Visible = false;
+            CancelBox.Enabled = false;
+            CancelBox.Visible = false;
+        }
+
+        private void AddBox_Click(object sender, EventArgs e)
+        {
+            if (AddTextBox.Text.Length == 5)
+            {
+                using (FileStream fs = new FileStream(@"Data\words.db", FileMode.Append, FileAccess.Write))
+                using (StreamWriter writer = new StreamWriter(fs))
+                {
+                    writer.WriteLine(AddTextBox.Text);
+                }
+                AddTextBox.Text = String.Empty;
+                Height = 331;
+                AddLabel.Enabled = false;
+                AddLabel.Visible = false;
+                AddTextBox.Enabled = false;
+                AddTextBox.Visible = false;
+                AddBox.Enabled = false;
+                AddBox.Visible = false;
+                CancelBox.Enabled = false;
+                CancelBox.Visible = false;
+            }
         }
     }
 }

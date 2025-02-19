@@ -43,8 +43,16 @@
             GenerateButton = new Button();
             ClearButton = new Button();
             pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            AddLabel = new Label();
+            AddTextBox = new TextBox();
+            AddBox = new PictureBox();
+            CancelBox = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AddBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)CancelBox).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -211,11 +219,78 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(245, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(20, 20);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 9;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // AddLabel
+            // 
+            AddLabel.AutoSize = true;
+            AddLabel.Enabled = false;
+            AddLabel.Location = new Point(12, 292);
+            AddLabel.Name = "AddLabel";
+            AddLabel.Size = new Size(160, 15);
+            AddLabel.TabIndex = 10;
+            AddLabel.Text = "Добавить слово в словарь";
+            AddLabel.Visible = false;
+            // 
+            // AddTextBox
+            // 
+            AddTextBox.CharacterCasing = CharacterCasing.Upper;
+            AddTextBox.Enabled = false;
+            AddTextBox.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            AddTextBox.Location = new Point(12, 310);
+            AddTextBox.MaxLength = 5;
+            AddTextBox.Name = "AddTextBox";
+            AddTextBox.PlaceholderText = "Новое слово";
+            AddTextBox.Size = new Size(182, 43);
+            AddTextBox.TabIndex = 11;
+            AddTextBox.TabStop = false;
+            AddTextBox.Visible = false;
+            // 
+            // AddBox
+            // 
+            AddBox.Enabled = false;
+            AddBox.Image = (Image)resources.GetObject("AddBox.Image");
+            AddBox.Location = new Point(200, 310);
+            AddBox.Name = "AddBox";
+            AddBox.Size = new Size(43, 43);
+            AddBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            AddBox.TabIndex = 12;
+            AddBox.TabStop = false;
+            AddBox.Visible = false;
+            AddBox.Click += AddBox_Click;
+            // 
+            // CancelBox
+            // 
+            CancelBox.Enabled = false;
+            CancelBox.Image = (Image)resources.GetObject("CancelBox.Image");
+            CancelBox.Location = new Point(245, 310);
+            CancelBox.Name = "CancelBox";
+            CancelBox.Size = new Size(43, 43);
+            CancelBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            CancelBox.TabIndex = 13;
+            CancelBox.TabStop = false;
+            CancelBox.Visible = false;
+            CancelBox.Click += CancelBox_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(300, 292);
+            Controls.Add(CancelBox);
+            Controls.Add(AddBox);
+            Controls.Add(AddTextBox);
+            Controls.Add(AddLabel);
+            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(ClearButton);
             Controls.Add(GenerateButton);
@@ -235,6 +310,9 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AddBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)CancelBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -255,5 +333,10 @@
         private TextBox textBox3;
         private TextBox textBox2;
         private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Label AddLabel;
+        private TextBox AddTextBox;
+        private PictureBox AddBox;
+        private PictureBox CancelBox;
     }
 }
