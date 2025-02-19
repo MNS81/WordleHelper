@@ -42,7 +42,9 @@
             OutTextBox = new TextBox();
             GenerateButton = new Button();
             ClearButton = new Button();
+            pictureBox1 = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -58,7 +60,7 @@
             tableLayoutPanel1.Controls.Add(textBox3, 2, 0);
             tableLayoutPanel1.Controls.Add(textBox2, 1, 0);
             tableLayoutPanel1.Controls.Add(textBox1, 0, 0);
-            tableLayoutPanel1.Location = new Point(12, 27);
+            tableLayoutPanel1.Location = new Point(12, 38);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -76,6 +78,7 @@
             textBox5.PlaceholderText = "*";
             textBox5.Size = new Size(49, 61);
             textBox5.TabIndex = 4;
+            textBox5.TabStop = false;
             textBox5.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox4
@@ -88,6 +91,7 @@
             textBox4.PlaceholderText = "*";
             textBox4.Size = new Size(49, 61);
             textBox4.TabIndex = 3;
+            textBox4.TabStop = false;
             textBox4.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox3
@@ -100,6 +104,7 @@
             textBox3.PlaceholderText = "*";
             textBox3.Size = new Size(49, 61);
             textBox3.TabIndex = 2;
+            textBox3.TabStop = false;
             textBox3.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox2
@@ -112,6 +117,7 @@
             textBox2.PlaceholderText = "*";
             textBox2.Size = new Size(49, 61);
             textBox2.TabIndex = 1;
+            textBox2.TabStop = false;
             textBox2.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox1
@@ -124,12 +130,13 @@
             textBox1.PlaceholderText = "*";
             textBox1.Size = new Size(49, 61);
             textBox1.TabIndex = 0;
+            textBox1.TabStop = false;
             textBox1.TextAlign = HorizontalAlignment.Center;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(12, 20);
             label1.Name = "label1";
             label1.Size = new Size(182, 15);
             label1.TabIndex = 1;
@@ -138,42 +145,44 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 95);
+            label2.Location = new Point(12, 106);
             label2.Name = "label2";
-            label2.Size = new Size(111, 15);
+            label2.Size = new Size(122, 15);
             label2.TabIndex = 2;
-            label2.Text = "Известные буквы";
+            label2.Text = "Правильные буквы";
             // 
             // InTextBox
             // 
             InTextBox.CharacterCasing = CharacterCasing.Upper;
             InTextBox.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            InTextBox.Location = new Point(12, 113);
+            InTextBox.Location = new Point(12, 124);
             InTextBox.Name = "InTextBox";
             InTextBox.Size = new Size(276, 43);
             InTextBox.TabIndex = 3;
+            InTextBox.TabStop = false;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 159);
+            label3.Location = new Point(12, 170);
             label3.Name = "label3";
-            label3.Size = new Size(114, 15);
+            label3.Size = new Size(136, 15);
             label3.TabIndex = 4;
-            label3.Text = "Исключить буквы";
+            label3.Text = "Неправильные буквы";
             // 
             // OutTextBox
             // 
             OutTextBox.CharacterCasing = CharacterCasing.Upper;
             OutTextBox.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            OutTextBox.Location = new Point(12, 177);
+            OutTextBox.Location = new Point(12, 188);
             OutTextBox.Name = "OutTextBox";
             OutTextBox.Size = new Size(276, 43);
             OutTextBox.TabIndex = 5;
+            OutTextBox.TabStop = false;
             // 
             // GenerateButton
             // 
-            GenerateButton.Location = new Point(12, 237);
+            GenerateButton.Location = new Point(12, 246);
             GenerateButton.Name = "GenerateButton";
             GenerateButton.Size = new Size(107, 34);
             GenerateButton.TabIndex = 6;
@@ -183,7 +192,7 @@
             // 
             // ClearButton
             // 
-            ClearButton.Location = new Point(180, 237);
+            ClearButton.Location = new Point(180, 246);
             ClearButton.Name = "ClearButton";
             ClearButton.Size = new Size(108, 34);
             ClearButton.TabIndex = 7;
@@ -191,11 +200,23 @@
             ClearButton.UseVisualStyleBackColor = true;
             ClearButton.Click += ClearButton_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(271, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(20, 20);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(300, 284);
+            ClientSize = new Size(300, 292);
+            Controls.Add(pictureBox1);
             Controls.Add(ClearButton);
             Controls.Add(GenerateButton);
             Controls.Add(OutTextBox);
@@ -213,6 +234,7 @@
             Text = "Wordle game helper";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -232,5 +254,6 @@
         private TextBox textBox4;
         private TextBox textBox3;
         private TextBox textBox2;
+        private PictureBox pictureBox1;
     }
 }
