@@ -47,6 +47,7 @@ namespace WordleHelper
             if (textBox5.Text.Length != 0) maskLetters[4] = textBox5.Text;
             if (InTextBox.Text.Length > 0 || OutTextBox.Text.Length > 0 || String.Join("", maskLetters) != ".....")
             {
+                maskWord = String.Join("", maskLetters);
                 using (StreamReader sr = new StreamReader(@"Data\words.db", Encoding.UTF8))
                 {
                     string line;
@@ -63,14 +64,13 @@ namespace WordleHelper
                 {
                     words = words.Where(str => OutTextBox.Text.All(c => !str.Contains(c))).ToList();
                 }
-                maskWord = String.Join("", maskLetters);
                 if (maskWord != ".....")
                 {
-                    string pattern = "^" + maskWord + "$";
-                    words = words.Where(x => Regex.IsMatch(x, pattern)).ToList();
+                    words = words.Where(x => Regex.IsMatch(x, $"^{maskWord}$")).ToList();
                 }
                 MessageBox.Show(String.Join("\t", words));
                 words.Clear();
+                maskWord = String.Empty;
             }
             else
             {
