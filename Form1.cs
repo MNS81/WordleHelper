@@ -56,13 +56,13 @@ namespace WordleHelper
                         words.Add(line.ToUpper().Replace("¨", "Å"));
                     }
                 }
-                if (InTextBox.Text.Length > 0)
-                {
-                    words = words.Where(str => InTextBox.Text.All(c => str.Contains(c))).ToList();
-                }
                 if (OutTextBox.Text.Length > 0)
                 {
                     words = words.Where(str => OutTextBox.Text.All(c => !str.Contains(c))).ToList();
+                }
+                if (InTextBox.Text.Length > 0)
+                {
+                    words = words.Where(str => InTextBox.Text.All(c => str.Contains(c))).ToList();
                 }
                 if (maskWord != ".....")
                 {
