@@ -10,11 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\README.md" />
     <None Remove="Data\words.db" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="abc-block.ico" />
+    <Content Include="Data\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\words.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
