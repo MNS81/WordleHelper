@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace WordleHelper
 {
@@ -18,6 +16,7 @@ namespace WordleHelper
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            words.Clear();
             textBox1.Text = String.Empty;
             textBox2.Text = String.Empty;
             textBox3.Text = String.Empty;
@@ -27,18 +26,11 @@ namespace WordleHelper
             OutTextBox.Text = String.Empty;
             maskWord = String.Empty;
             maskLetters = new string[] { ".", ".", ".", ".", "." };
-            using (StreamReader sr = new StreamReader(@"Data\words.db", Encoding.UTF8))
-            {
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    words.Add(line.ToUpper().Replace("¨", "Å"));
-                }
-            }
         }
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
+            words.Clear();
             maskLetters = new string[] { ".", ".", ".", ".", "." };
             if (textBox1.Text.Length != 0) maskLetters[0] = textBox1.Text;
             if (textBox2.Text.Length != 0) maskLetters[1] = textBox2.Text;
